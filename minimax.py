@@ -55,11 +55,10 @@ def minimax(x, d, a_b, turn):
 		print('a update:')
 		a_new = x[0]
 		b_new = x[1]
-		a_is = max(a_new, a_old)
+		a_is = max(a_new, a_initialized)
 		print('a_is = ', a_is)
 		b_is = b_initialized
 		a_b_is = [a_is, b_is]
-		a_b = a_b_is
 		print("a_b_is =", a_b_is)
 		stop = a_is>=b_is
 		return a_b_is, stop
@@ -87,7 +86,6 @@ def minimax(x, d, a_b, turn):
 		print('b_is = ', b_is)
 		a_is = a_initialized
 		a_b_is = [a_is, b_is]
-		# a_b = a_b_is
 		print("a_b_is =", a_b_is)
 		stop = b_is<=a_is
 		return a_b_is, stop
@@ -152,6 +150,7 @@ for x_ in x:
 	x_updated.append(x_)
 	print("Input: x_original =", x_orig)
 	print("Result: x_updated =", x_updated)
+	# prune binary tree if a_is>b_is
 	if stop :
 		break
 
