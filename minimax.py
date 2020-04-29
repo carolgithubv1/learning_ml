@@ -43,7 +43,7 @@ def minimax(x, d, a_b, turn):
 		a_old = a_b[0]
 		b_old = a_b[1]
 
-	    # initialize value of nodes by a_b by recursively calling the func calls itself
+	        # initialize value of nodes by a_b by recursively calling the func calls itself
 		print('a initialize:')
 		a_b_initialized, flag = minimax(x, d - 1, a_b, turn)
 		print("x =", x)
