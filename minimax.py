@@ -3,7 +3,7 @@ import math
 
 # Binary Tree
 # ===================================
-# value = [1,2,3]
+# value = [1.1,1.2]
 class Node(object): 
 	def __init__(self, value):
 			self.a=value[0][0]
