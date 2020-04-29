@@ -91,7 +91,7 @@ def minimax(x, d, a_b, turn):
 		return a_b_is, stop
 
 
-# create and initialize a binary tree with randome floating values
+# Create and initialize a binary tree with randome floating values
 # ===================================
 tree = BinaryTree(np.random.rand(1,2))
 tree.root.left = Node(np.random.rand(1,2))
