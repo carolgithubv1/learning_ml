@@ -1,7 +1,7 @@
 import numpy as np
 import math
 
-# initialize Binary Tree
+# Binary Tree
 # ===================================
 # value = [1,2,3]
 class Node(object): 
@@ -24,7 +24,7 @@ class BinaryTree(object):
 		self.root= Node(root)  # before creating a tree
 
 
-# minimax basic 
+# minimax function 
 # ===================================
 # x provide values at d=0
 def minimax(x, d, a_b, turn):
@@ -91,7 +91,8 @@ def minimax(x, d, a_b, turn):
 		return a_b_is, stop
 
 
-# create a binary tree
+# create and initialize a binary tree with randome floating values
+# ===================================
 tree = BinaryTree(np.random.rand(1,2))
 tree.root.left = Node(np.random.rand(1,2))
 tree.root.right = Node(np.random.rand(1,2))
@@ -117,7 +118,7 @@ tree.root.left.right.right.right = Node(np.random.rand(1,2))
 
 
 
-# Process: recursive update (a,b) upwards :
+# Process: recursively update (a,b) upwards (inorder traversal) :
 # ===================================
 d = 3  # root is when d=1
 breadth_BT = 2**(d-1) # breadth of the tree = 2**(d_max-1)
