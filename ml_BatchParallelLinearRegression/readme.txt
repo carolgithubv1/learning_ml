@@ -1,9 +1,13 @@
-Algorithm Description: 
+Copyright:
+==========
+Permission is required. 
 
+Algorithm Description: 
+======================
 The input points (x,y) was categorized by a straight line, ax+by+c=0, which optimal parameters are approached by the minimax() algorithm. 
 
 Advantage of this design:
-
+=========================
 batch based processing to enable the following parallel processing for algorithm efficiency improvement purpose. 
 the minimax algorithm is picked up to minimize the upper bound of the vertical distance of between points and the optimal line. 
 
