@@ -55,6 +55,15 @@ def input(N_batches, N_xy_perBatch, N_top):
    x_y = np.random.rand(N_xy_perBatch, 2)
    return a_b_c_initial_value, x_y
  
+# da
+# ========================================================
+def delta_abc(a_b_c, x_y):
+    [a,b,c] = a_b_c
+    [x,y] = x_y
+    d_a = x/math.sqrt(a**2+b**2)
+    d_b = y/math.sqrt(a**2+b**2)
+    d_c = 1/math.sqrt(a**2+b**2)
+    return d_a,d_b,d_c
 
 # adjust (a,b,c) based on h and df
 # ========================================================
