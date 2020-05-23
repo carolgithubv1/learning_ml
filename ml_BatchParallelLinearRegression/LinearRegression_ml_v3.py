@@ -64,7 +64,7 @@ def df_cost2(a_b_c, x_y):
 # ========================================================
 def sort_topN_min(d, N_top):
   d_sorted_small2big = np.sort(d)[::-1][0:N_top]
-
+  return d_sorted_small2big
 
 # epsilon 
 # ========================================================
