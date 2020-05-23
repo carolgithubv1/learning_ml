@@ -110,6 +110,31 @@ def plot_data(x_y, a_b_c_final):
     # plt.legend(loc='lower right')
     plt.show()
 
+# Plot
+# ========================================================
+def plot_data_compare2line(x_y, a_b_c_final, a_b_c_final_2):
+    # [x, y] = x_y.reshape(N_batches*N_xy_perBatch,2)
+    x = x_y.reshape(N_batches * N_xy_perBatch, 2)[:, 0]
+    y = x_y.reshape(N_batches * N_xy_perBatch, 2)[:, 1]
+    # [a, b, c] = a_b_c_final
+    a = a_b_c_final[0]
+    b = a_b_c_final[1]
+    c = a_b_c_final[2]
+    # get y on the regression line
+    y_regression_line = get_y_from_a_b_c(x, a_b_c_final)
+    y_regression_line_2 = get_y_from_a_b_c(x, a_b_c_final_2)
+    # plot
+    plt.figure()
+    plt.plot(x, y, 'bo', label='Input Points')
+    plt.plot(x, y_regression_line, 'k', label='$Mean(\epsilon^2)$')
+    plt.plot(x, y_regression_line_2, 'g*', label='Sum $\epsilon^2/N_perBatch$')
+    plt.yscale('linear')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.title('Liner Regression Classifies Input Data')
+    plt.grid(True)
+    plt.legend(loc='lower right')
+    plt.show()
 
 # ###############################################
 # Processing
@@ -120,8 +145,8 @@ def plot_data(x_y, a_b_c_final):
 N_batches = 7
 N_xy_perBatch = 5
 N_top = 3
-N_iter = 2
-N_epoch = 3
+N_iter = 49
+N_epoch = 7
 
 # initial value of a,b,c and input data x_y
 # -------------------------------------------------------
@@ -261,7 +286,7 @@ for k in range(N_epoch):
     epsilon_min = min(epsilon_mean)
     a_b_c_final_c2 = a_b_c_is_c2[epsilon_min_index_allBatches][np.asarray(epsilon_min_index_list)[epsilon_min_index_allBatches]]
     x_y_final_c2 = x_y[epsilon_min_index_allBatches][np.asarray(epsilon_min_index_list)[epsilon_min_index_allBatches]]
-    # avoid using the list above
+
     a_b_c_final_c2 = a_b_c_is_c2[epsilon_min_index_allBatches][int(epsilon_min_index[epsilon_min_index_allBatches])]
     x_y_final_c2 = x_y[epsilon_min_index_allBatches][int(epsilon_min_index[epsilon_min_index_allBatches])]
 
@@ -285,4 +310,6 @@ plot_data(x_y, a_b_c_finalResult)
 print('a_b_c_final_c3 = ', a_b_c_final_c3)
 a_b_c_finalResult = a_b_c_final_c3
 plot_data(x_y, a_b_c_finalResult)
+
+plot_data_compare2line(x_y,a_b_c_final_c2, a_b_c_final_c3)
 print('End ......................................................................')
