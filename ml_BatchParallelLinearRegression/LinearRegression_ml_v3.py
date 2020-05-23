@@ -66,6 +66,7 @@ def sort_topN_min(d, N_top):
   d_sorted_small2big = np.sort(d)[::-1][0:N_top]
   return d_sorted_small2big
 
+
 # epsilon 
 # ========================================================
 def epsilon_cost2(a_b_c, x_y): 
@@ -73,6 +74,9 @@ def epsilon_cost2(a_b_c, x_y):
   [x,y] = x_y
   epsilon =( -a*x/b-c/b-y )
   return epsilon 
+
+
+
 
 
 # Plot 
@@ -110,7 +114,7 @@ def plot_data(x_y, a_b_c_final):
     # plt.legend(loc='lower right')
     plt.show()
 
-    
+
 
 
 # ###############################################
@@ -200,10 +204,10 @@ for k in range(N_epoch):
 	    x_y_final              = x_y[d_max_index_allBatches, np.asarray(d_max_index_list)[d_max_index_allBatches]]
     # *******************************************************
     
-
+    
+    a_b_c_c2 = a_b_c_final
     # minimize (-a*x[i]/b-c/b-y[i])^2
 	# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    a_b_c_c2 = a_b_c_final
     for jj in range(N_batches): 
     	for ii in range(N_xy_perBatch): 
     		# derivative and based input(x,y) to update (a,b,c)
@@ -228,6 +232,6 @@ for k in range(N_epoch):
     a_b_c_final_c2         = a_b_c_is_c2[epsilon_min_index_allBatches, np.asarray(epsilon_min_index)[epsilon_min_index_allBatches]]
     x_y_final_c2           = x_y[epsilon_min_index_allBatches, np.asarray(epsilon_min_index)[epsilon_min_index_allBatches]] 
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+a_b_c_finalResult =  a_b_c_final_c2
 
-
-plot_data(x_y, a_b_c_final)
+plot_data(x_y, a_b_c_finalResult)
