@@ -266,6 +266,7 @@ for k in range(N_epoch):
     print('epsilon_min_index_list = ', epsilon_min_index_list)
     # index of the minimum of epsilon of all
     epsilon_min_index_allBatches = np.argmin(np.asarray(epsilon_mean_list))
+    epsilon_sum_min_index_allBatches.append(epsilon_min_index_allBatches)
     epsilon_min = min(np.asarray(epsilon_mean_list))
     a_b_c_final_c2 = a_b_c_is_c2[epsilon_min_index_allBatches][np.asarray(epsilon_min_index_list)[epsilon_min_index_allBatches]]
     x_y_final_c2 = x_y[epsilon_min_index_allBatches][np.asarray(epsilon_min_index_list)[epsilon_min_index_allBatches]]
