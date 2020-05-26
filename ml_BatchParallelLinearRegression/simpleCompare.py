@@ -86,12 +86,12 @@ def plot_graph(a_b_c, x_y):
     y = x_y[:,1]
     y_regression_line = get_y_from_a_b_c(x, a_b_c)
     plt.figure()
-    plt.plot(x, y, 'bo', label='Input Points')
-    plt.plot(x, y_regression_line, 'g-', label='$\bm{\min} \bigg( \ceil[\big]{d_i} \bigg)$')
+    plt.scatter(X, Y, color='blue', marker='o', label='Input Points')
+    plt.plot(X, y_1, 'g', label='MiniMax')
     plt.yscale('linear')
     plt.xlabel('x')
     plt.ylabel('y')
-    plt.title('Liner Regression Classifies Input Data LMS: $\bm{\min}(\epsilon)^2$')
+    plt.title('Liner Regression Classifies Input Data')
     plt.grid(True)
     plt.legend(loc='lower right')
     plt.show()
@@ -122,8 +122,11 @@ learning_rate = 0.05
 
 
 # ###############################################
-# Processing
+# Processing: MiniMax
 # ###############################################
+print('\n')
+print('Normal Distance Change:')
+print('================================')
 for i in range(N_epoch):
     for j in range(N_iterations):
         d_max_index, d_max = find_maxDistance_pointLine(a_b_c, x_y)
@@ -141,7 +144,7 @@ y_1 = -a*X/b-c/b
 
 
 # ###############################################
-# Process 2
+# Process: LMS
 # ###############################################
 # Calculating coefficient
 # Mean X and Y
@@ -161,6 +164,13 @@ c =  (-a/b * mean_x - mean_y)*b   # printing the coefficient
 a_b_c_2 = [a,b,c]
 print(-a/b, -c/b)
 y_2 = y = -a*X/b-c/b
+print('\n')
+print('Virtical Distance Change:')
+print('================================')
+# print('d_virtical = ', abs(y_2 - Y))
+for j in range(n):
+    d_verticalDistance = abs(y_2[j] - Y[j])
+    print('input= ', j, 'd_vertialDistance= ', d_verticalDistance)
 
 
 # ###############################################
@@ -208,6 +218,7 @@ for i in range(n):
     ss_res_2 += (Y[i] - y_2[i]) ** 2
 r2_1 = 1 - (ss_res_1/ss_tot_1)
 r2_2 = 1 - (ss_res_2/ss_tot_2)
+print('\n')
 print('1. Least Maximum Normal Distance + Least Normal Distance')
 print('2. Least Mean Square (LMS) of Virtual Distance')
 print('Computation Cost :')
@@ -222,8 +233,8 @@ print('rmse_2 = ', rmse_2)
 print('\n')
 print("R2 Coefficient of Determination")
 print('================================')
-print('r2_1 = ', )
-print('r2_2 = ', )
+print('r2_1 = ', r2_1)
+print('r2_2 = ', r2_2)
 # print("{0:.000000%}".format(1./3))
 # print('r2_1 = ', "{0:.000000%}".format(r2_1))
 # print('r2_2 = ', "{0:.000000%}".format(r2_2))
