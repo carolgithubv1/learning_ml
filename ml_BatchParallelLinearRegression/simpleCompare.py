@@ -108,7 +108,8 @@ N_iterations = 81*5
 # N = 49
 # x_y = np.random.randint(1, 100, size=(N,2))
 a_b_c = np.random.rand(3,1)
-print(a_b_c)
+print('Initial Value of a,b,c ')
+print('a =', a_b_c[0], ', b = ', a_b_c[1], ', c = ', a_b_c[2])
 
 # Reading Data
 data = pd.read_csv('headbrain.csv')
@@ -136,6 +137,8 @@ for i in range(N_epoch):
 # plot_graph(a_b_c, x_y)
 a_b_c_1 = a_b_c
 [a,b,c] = a_b_c_1
+print('================================')
+print('-a/b = ', -a/b, ', -c/b =', -c/b)
 # max_x = np.max(X) + 100
 # min_x = np.min(X) - 100
 # x = np.linspace(min_x, max_x, 1000)
@@ -162,16 +165,17 @@ b  = 1
 a = - numerator / denominator
 c =  (-a/b * mean_x - mean_y)*b   # printing the coefficient
 a_b_c_2 = [a,b,c]
-print(-a/b, -c/b)
 y_2 = y = -a*X/b-c/b
 print('\n')
 print('Virtical Distance Change:')
+print('-a/b = ', -a/b, ', -c/b =', -c/b)
 print('================================')
 # print('d_virtical = ', abs(y_2 - Y))
 for j in range(n):
     d_verticalDistance = abs(y_2[j] - Y[j])
     print('input= ', j, 'd_vertialDistance= ', d_verticalDistance)
-
+print('================================')
+print('-a/b = ', -a/b, ', -c/b =', -c/b)
 
 # ###############################################
 # Plot
@@ -192,10 +196,9 @@ plt.legend(loc='upper left')
 plt.show()
 
 
-# ###################
-# error
-# ###################
-
+# ###############################################
+# Error
+# ###############################################
 # Calculating Root Mean Squares Error
 rmse_1 = 0
 rmse_2 = 0
